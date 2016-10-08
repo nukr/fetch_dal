@@ -1,6 +1,7 @@
 package main
 
 import "github.com/nukr/grafetch"
+import "github.com/nukr/template_parse"
 
 func createService(serviceName, accessToken string) string {
 	query := `
@@ -16,7 +17,7 @@ func createService(serviceName, accessToken string) string {
 	}{
 		ServiceName: serviceName,
 	}
-	queryString := templateParse(query, s)
+	queryString := tp.TemplateParse(query, s)
 
 	graphql := grafetch.New("http://localhost:12345/graphql")
 	graphql.SetHeader("x-meepcloud-access-token", accessToken)

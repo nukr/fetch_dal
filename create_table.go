@@ -1,6 +1,7 @@
 package main
 
 import "github.com/nukr/grafetch"
+import "github.com/nukr/template_parse"
 
 func createTable(tableName, token, serviceName string) string {
 	query := `
@@ -15,7 +16,7 @@ func createTable(tableName, token, serviceName string) string {
 	}{
 		TableName: tableName,
 	}
-	queryString := templateParse(query, s)
+	queryString := tp.TemplateParse(query, s)
 
 	graphql := grafetch.New("http://localhost:12345/graphql")
 	graphql.SetHeader("x-meepcloud-access-token", token)

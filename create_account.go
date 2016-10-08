@@ -1,6 +1,7 @@
 package main
 
 import "github.com/nukr/grafetch"
+import "github.com/nukr/template_parse"
 
 func createAccount(username, password string) (accessToken string) {
 	query := `
@@ -17,7 +18,7 @@ func createAccount(username, password string) (accessToken string) {
 		Username: username,
 		Password: password,
 	}
-	queryString := templateParse(query, s)
+	queryString := tp.TemplateParse(query, s)
 
 	graphql := grafetch.New("http://localhost:12345/graphql")
 	graphql.SetQuery(grafetch.GraphQLQuery{
