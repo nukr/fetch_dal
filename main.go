@@ -26,10 +26,11 @@ func main() {
 		AccessToken: accessToken,
 		ServiceName: serviceName,
 	}
-	s := struct {
+	s := []struct {
 		AA int
 	}{
-		AA: 1234,
+		{AA: 11},
+		{AA: 22},
 	}
 
 	result := d.CreateObject(tableName, s)
